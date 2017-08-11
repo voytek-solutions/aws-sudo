@@ -11,7 +11,7 @@ SHELL := env PATH=$(PATH) /bin/bash
 	.venv/bin/pip install pep8 twine
 
 build: .venv
-	python setup.py install
+	python setup.py sdist install
 
 watch:
 	while sleep 1; do \
@@ -28,6 +28,7 @@ install:
 
 upload:
 	twine upload dist/*
+	# python setup.py sdist upload -r pypi
 
 lint:
 	pep8 aws_sudo/

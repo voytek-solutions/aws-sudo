@@ -24,7 +24,7 @@ def sudo(cmd_args):
 
     if cmd_args.mode is 'in_place':
         update_credentials(cmd_args.profile, credentials)
-    elif cmd_args.mode is 'environment':
+    elif cmd_args.mode is 'export':
         print_exports(credentials)
     elif cmd_args.mode is 'proxy':
         proxy_command(cmd_args.command, cmd_args.command_args, credentials)

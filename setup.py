@@ -13,9 +13,9 @@ else:
 
 setup(
     name='aws-sudo',
-    version='1.0.1',
+    version='1.0.2',
 
-    description='su but with AWS accounts',
+    description='sudo but with AWS accounts',
     long_description=long_description,
 
     url='https://github.com/voytek-solutions/aws-sudo',
@@ -49,7 +49,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='aws infrastructure ansible terraform packer',
+    keywords=['aws', 'infrastructure', 'ansible', 'terraform', 'packer'],
 
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
