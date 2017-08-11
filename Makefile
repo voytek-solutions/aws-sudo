@@ -1,16 +1,17 @@
 
 PWD = $(shell pwd)
+VENV ?= .venv
 
-PATH := $(PWD)/.venv/bin:$(shell printenv PATH)
+PATH := $(VENV)/bin:$(shell printenv PATH)
 SHELL := env PATH=$(PATH) /bin/bash
 
 .PHONY: build
 
-.venv:
-	virtualenv .venv
-	.venv/bin/pip install pep8 twine
+$(VENV):
+	virtualenv $(VENV)
+	$(VENV)/bin/pip install -r dev-requirements.txt
 
-build: .venv
+build: $(VENV)
 	python setup.py sdist install
 
 watch:
@@ -19,18 +20,18 @@ watch:
 		| entr -d $(MAKE) unittest lint build; \
 	done
 
-unittest:
+unittest: $(VENV)
 	python -m unittest discover aws_sudo
 
 install:
 	ln -s $(PWD)/.venv/bin/awssudo /usr/local/bin/awssudo
 	@echo "awssu installed in /usr/local/bin/awssudo"
 
-upload:
+upload: $(VENV)
 	twine upload dist/*
 	# python setup.py sdist upload -r pypi
 
-lint:
+lint: $(VENV)
 	pep8 aws_sudo/
 
 clean:
