@@ -1,0 +1,17 @@
+## IDEs, OS, ...
+
+DS_Store
+
+
+
+## general things to ignore
+__pycache__/
+.venv
+*.egg
+*.egg-info/
+*.py[cod]
+*.so
+*~
+build/
+dist/
+README.rst
