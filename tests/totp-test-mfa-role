@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+import pyotp
+
+totp = pyotp.TOTP("ZRFL5AZXANOP66YWRKJCX47DBHVKY7HDKA72SDJNLS62ZZUTVNY6JM5GDZQUSNX7")
+print(totp.now())

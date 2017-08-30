@@ -5,7 +5,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-if path.exists('README.txt'):
+if path.exists('README.rst'):
     with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
         long_description = f.read()
 else:
@@ -13,7 +13,7 @@ else:
 
 setup(
     name='aws-sudo',
-    version='1.0.2',
+    version='1.0.3',
 
     description='sudo but with AWS accounts',
     long_description=long_description,
@@ -46,6 +46,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
 
     # What does your project relate to?

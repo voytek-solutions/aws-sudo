@@ -1,6 +1,7 @@
 
 PWD = $(shell pwd)
-VENV ?= .venv
+VENV ?= $(PWD)/.venv
+INSTALL_DIR ?= /usr/local/bin
 
 PATH := $(VENV)/bin:$(shell printenv PATH)
 SHELL := env PATH=$(PATH) /bin/bash
@@ -23,8 +24,11 @@ watch:
 unittest: $(VENV)
 	python -m unittest discover aws_sudo
 
+test: $(VENV)
+	cd tests && ./run
+
 install:
-	ln -s $(PWD)/.venv/bin/awssudo /usr/local/bin/awssudo
+	ln -s $(PWD)/.venv/bin/awssudo $(INSTALL_DIR)/awssudo
 	@echo "awssu installed in /usr/local/bin/awssudo"
 
 upload: $(VENV)
@@ -36,3 +40,6 @@ lint: $(VENV)
 
 clean:
 	rm -rf .venv
+	rm -rf build
+	rm -rf aws_sudo.egg-info
+	rm -rf dist

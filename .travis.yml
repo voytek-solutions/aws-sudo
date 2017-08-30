@@ -13,3 +13,4 @@ install:
 script:
   - make lint VENV=${VIRTUAL_ENV}
   - make unittest VENV=${VIRTUAL_ENV}
+  - make test VENV=${VIRTUAL_ENV}
