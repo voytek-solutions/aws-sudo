@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 ./setup
 
@@ -6,5 +7,7 @@ HOME=. aws-sudo test-plain echo "[test-plain] key: \${AWS_ACCESS_KEY_ID}"
 HOME=. aws-sudo test-role echo "[test-role] key: \${AWS_ACCESS_KEY_ID}"
 HOME=. aws-sudo -m "$(./totp-test-mfa)" test-mfa echo "[test-mfa] key: \${AWS_ACCESS_KEY_ID}"
 HOME=. aws-sudo -m "$(./totp-test-mfa-role)" test-role-mfa echo "[test-role-mfa] key: \${AWS_ACCESS_KEY_ID}"
+HOME=. aws-sudo -i just-source
+HOME=. aws-sudo -i self-update
 
 ./teardown

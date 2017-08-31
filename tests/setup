@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
-mkdir -p "$(echo LmF3cwo= | base64 -D)"
-base64 -D -i fixtures -o "$(echo LmF3cy9jcmVkZW50aWFscwo= | base64 -D)"
+mkdir -p "$(echo LmF3cwo= | base64 --decode)"
+cat fixtures | base64 --decode > "$(echo LmF3cy9jcmVkZW50aWFscwo= | base64 --decode)"

@@ -48,6 +48,11 @@ class TestCommandParser(unittest.TestCase):
         self.assertEqual(args.mode, 'in_place')
 
         args = self.parser.get_arguments(
+            'aws-sudo -i test-profile'.split()[1:]
+        )
+        self.assertEqual(args.mode, 'in_place')
+
+        args = self.parser.get_arguments(
             'aws-sudo test-profile test-command -i lorem'.split()[1:]
         )
         self.assertEqual(args.mode, 'proxy')

@@ -18,11 +18,11 @@ class CommandParser:
     def get_arguments(self, args=None):
         arguments, _ = self.parser.parse_known_args(args)
 
-        if arguments.command is None:
-            arguments.mode = 'export'
-
         if arguments.mode is None:
-            arguments.mode = 'proxy'
+            if arguments.command is None:
+                arguments.mode = 'export'
+            else:
+                arguments.mode = 'proxy'
 
         return arguments
 

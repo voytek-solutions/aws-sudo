@@ -1,3 +1,4 @@
 #!/bin/bash
+set -e
 
-rm -rf "$(echo LmF3cwo= | base64 -D)"
+rm -rf "$(echo LmF3cwo= | base64 --decode)"
