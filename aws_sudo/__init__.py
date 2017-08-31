@@ -58,7 +58,7 @@ def print_exports(credentials):
 
 def update_credentials(profile, credentials):
     credentials_file = os.path.expanduser('~/.aws/credentials')
-    config = configparser()
+    config = configparser.ConfigParser()
     config.read(credentials_file)
 
     # Create profile section in credentials file
@@ -115,6 +115,16 @@ def get_credentials(profile_config):
         # This is normal AMI with MFA token
         session = get_session(profile_config)
         return login_with_mfa(session, profile_config)
+    elif 'source_profile' in profile_config or\
+            'aws_access_key_id' not in profile_config:
+        # This is most likely EC2 instance role
+        session = get_session(profile_config)
+        credentials = session.get_credentials().get_frozen_credentials()
+        return {
+            'AccessKeyId': credentials.access_key,
+            'SecretAccessKey': credentials.secret_key,
+            'SessionToken': str(credentials.token)
+        }
     else:
         return {
             'AccessKeyId': profile_config['aws_access_key_id'],
