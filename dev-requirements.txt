@@ -1,4 +1,4 @@
 pep8
 twine
 unittest2
-pyotp
+pyotp<2.4

@@ -29,7 +29,7 @@ test: $(VENV)
 
 install:
 	ln -s $(PWD)/.venv/bin/awssudo $(INSTALL_DIR)/awssudo
-	@echo "awssu installed in /usr/local/bin/awssudo"
+	@echo "awssu installed in $(INSTALL_DIR)/awssudo"
 
 upload: $(VENV)
 	twine upload dist/*

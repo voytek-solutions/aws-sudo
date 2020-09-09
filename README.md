@@ -1,5 +1,8 @@
 # AWS SU
 
+[![PyPI version](https://badge.fury.io/py/aws-sudo.svg)](https://badge.fury.io/py/aws-sudo)
+[![Travis Status](https://travis-ci.org/voytek-solutions/aws-sudo.svg?branch=master)](https://travis-ci.org/voytek-solutions/aws-sudo)
+
 Help with exporting AWS secrets and tokens when using assumed roles.
 
 ```
@@ -46,6 +49,10 @@ aws-sudo -s 60 my-profile ansible-playbook ...
 
 # update ~/.aws/credentials with tmp keys, secrets and tokens
 aws-sudo -i my-profile
+
+# create aws env file
+aws-sudo my-profile > .aws-env
+source .aws-env
 ```
 
 

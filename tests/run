@@ -9,5 +9,7 @@ HOME=. aws-sudo -m "$(./totp-test-mfa)" test-mfa echo "[test-mfa] key: \${AWS_AC
 HOME=. aws-sudo -m "$(./totp-test-mfa-role)" test-role-mfa echo "[test-role-mfa] key: \${AWS_ACCESS_KEY_ID}"
 HOME=. aws-sudo -i just-source
 HOME=. aws-sudo -i self-update
+cp `pwd`/.aws/credentials `pwd`/.aws/custom-credentials
+AWS_SHARED_CREDENTIALS_FILE=`pwd`/.aws/custom-credentials aws-sudo -i self-update
 
 ./teardown

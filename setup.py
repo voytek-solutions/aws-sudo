@@ -13,7 +13,7 @@ else:
 
 setup(
     name='aws-sudo',
-    version='1.0.4',
+    version='1.0.7',
 
     description='sudo but with AWS accounts',
     long_description=long_description,
@@ -55,13 +55,13 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
     install_requires=[
-        'boto3<1.4.4', # boto3 >= 1.4.4 requires botocore 1.5
-        'botocore==1.4.*',
-        'docutils==0.12.*',
-        'jmespath==0.9.*',
-        'python-dateutil==2.5.*',
-        's3transfer==0.1.*',
-        'six==1.10.*',
+        'boto3>=1.4.4',
+        'botocore>=1.4',
+        'docutils>=0.12,<0.16',
+        'jmespath>=0.9',
+        'python-dateutil>=2.5',
+        's3transfer>=0.1',
+        'six>=1.10',
     ],
 
     # To provide executable scripts, use entry points in preference to the

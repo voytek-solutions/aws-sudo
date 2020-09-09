@@ -57,7 +57,10 @@ def print_exports(credentials):
 
 
 def update_credentials(profile, credentials):
-    credentials_file = os.path.expanduser('~/.aws/credentials')
+    credentials_file = os.getenv(
+        'AWS_SHARED_CREDENTIALS_FILE',
+        os.path.expanduser('~/.aws/credentials')
+    )
     config = configparser.ConfigParser()
     config.read(credentials_file)
 
